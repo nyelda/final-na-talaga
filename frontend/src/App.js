@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import BMI from './components/BMI'
+import Homepage from './components/Homepage'
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/bmi" element={<BMI />} />
+          <Route path="/homepage" element={<Homepage />} />
         </Routes>     
       </BrowserRouter>
     </div>

@@ -8,7 +8,7 @@ const Signup = () => {
     const handleBMI = () => {
         alert('Proceeding to Calculate BMI');
         window.location.href = '/bmi';
-    }
+    };
 
     return (
         <div className="body">

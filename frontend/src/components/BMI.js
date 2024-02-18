@@ -8,16 +8,15 @@ const BMI = () => {
     const handleHome = () => {
         alert('Proceeding to Homepage');
         window.location.href = '/homepage';
-    }
+    };
 
     const cameraClick = () => {
         setShowCamera(true);
-      };
+    };
 
     return (
         <div className="body">
             <div className="dashboard-container">
-                    <form style={styles.form}>
                         <h2 style={styles.heading}>Calculate BMI</h2>
                             <div>
                                 <label htmlFor="weight" style={styles.label}>Weight</label>
@@ -33,12 +32,18 @@ const BMI = () => {
                             <div>
                             <label htmlFor="height" style={styles.label}>Height</label>
                             <button type="submit" style={styles.button} onClick={cameraClick}> Click here to see your height </button>
-                            {showCamera && (
-                                <Webcam />
-                            )}
                             </div>
-                    </form>
-                    <button type="submit" style={styles.button} onClick={handleHome}>Done</button>
+                            <div style={styles.webContainer}>
+                                    <div style={styles.camera}>
+                                    {showCamera && (
+                                        <Webcam 
+                                        height={400} 
+                                        width={400}
+                                        />
+                                    )}
+                                    </div>
+                                <button type="submit" style={styles.button} onClick={handleHome}>Done</button>
+                            </div>
             </div>
         </div>
     );
@@ -47,6 +52,22 @@ const BMI = () => {
 export default BMI;
 
 const styles = {
+    webContainer: {
+        padding: '50px',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        backgroundColor: '#000000',
+        border: '2px solid #000000',
+    },
+    camera: {
+        padding: '2px',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        backgroundColor: '#fff',
+        color: '#fff',
+        border: '2px solid #fff',
+        alignItems: 'center',
+    },
     heading: {
         textAlign: 'center',
         marginBottom: '20px',
@@ -55,10 +76,6 @@ const styles = {
         fontWeight: 'bold',
         lineHeight: '65px',
         color: '#fff',
-    },
-    form: {
-        display: 'flex',
-        flexDirection: 'column',
     },
     label: {
         marginBottom: '5px',
@@ -82,15 +99,5 @@ const styles = {
         justifyContent: 'center', 
         alignItems: 'center',
         margin: '5px', 
-    },
-    signupLink: {
-        marginTop: '10px',
-        textAlign: 'center',
-    },
-    link: {
-        color: '#007bff',
-        textDecoration: 'none',
-        justifyContent: 'center', 
-        alignItems: 'center', 
     },
 };
