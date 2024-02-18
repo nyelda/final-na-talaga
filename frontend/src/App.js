@@ -5,6 +5,7 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import BMI from './components/BMI'
 import Homepage from './components/Homepage'
+import Exercise from './components/Exercise'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/bmi" element={<BMI />} />
           <Route path="/homepage" element={<Homepage />} />
+          <Route path="/exercise" element={<Exercise />} />
         </Routes>     
       </BrowserRouter>
     </div>

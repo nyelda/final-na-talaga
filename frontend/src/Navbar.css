@@ -1,10 +1,98 @@
 .body {
-    margin: 0;
-    padding: 0;
     background-image: url('../public/gym7.jpg'); 
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: auto;
+}
+
+.picture {
+  background-image: url('../public/bicep.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 15px;
+  width: 121%;
+}
+
+.picture2 {
+  background-image: url('../public/row.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 15px;
+  width: 175%;
+}
+
+.picture3 {
+  background-image: url('../public/lift.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 15px;
+  width: 185%;
+}
+
+.picture4 {
+  background-image: url('../public/bicep.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 15px;
+  width: 121%;
+}
+
+.picture5 {
+  background-image: url('../public/bicep.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 15px;
+  width: 121%;
+}
+
+.picture6 {
+  background-image: url('../public/bicep.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 15px;
+  width: 121%;
+}
+
+.picture7 {
+  background-image: url('../public/bicep.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 15px;
+  width: 121%;
+}
+
+.picture8 {
+  background-image: url('../public/pushup.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 15px;
+  width: 225%;
+}
+
+.picture9 {
+  background-image: url('../public/twist.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 15px;
+  width: 121%;
+}
+
+.picture10 {
+  background-image: url('../public/squat.jpg'); 
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  height: auto;
+  width: 225%;
 }
 
 .dashboard-container {

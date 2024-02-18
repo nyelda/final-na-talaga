@@ -42,6 +42,10 @@ const BMI = () => {
                                         />
                                     )}
                                     </div>
+                                        <div style={styles.text}>
+                                        <h2>Your Height:</h2>
+                                        <h2>BMI:</h2>
+                                        </div>
                                 <button type="submit" style={styles.button} onClick={handleHome}>Done</button>
                             </div>
             </div>
@@ -75,6 +79,11 @@ const styles = {
         fontSize: '35px',
         fontWeight: 'bold',
         lineHeight: '65px',
+        color: '#fff',
+    },
+    text:{
+        textAlign: 'left',
+        fontSize: '15px',
         color: '#fff',
     },
     label: {
