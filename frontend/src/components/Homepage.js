@@ -1,6 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+import '../Navbar.css';
 
 const Homepage = () => {
+    const [activeTab, setActiveTab] = useState('exercise');
+
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
+    };
+
+    return (
+        <div className="body1">
+            <div className="dashboard-container">
+                <div className="navigation">
+                    <div className={`nav-item ${activeTab === 'exercise' ? 'active' : ''}`} onClick={() => handleTabChange('exercise')}>Exercises</div>
+                    <div className={`nav-item ${activeTab === 'profile' ? 'active' : ''}`} onClick={() => handleTabChange('profile')}>Profile</div>
+                </div>
+                <div className="tab-content">
+                    {activeTab === 'exercise' && <HomeTab />}
+                    {activeTab === 'profile' && <ProfileTab />}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const HomeTab = () => {
 
     const handleExer = () => {
         alert('Are you READY? READY!');
@@ -8,7 +32,7 @@ const Homepage = () => {
     };
 
     return(
-        <div className="body">
+        <div className="body2">
             <div className="dashboard-container">
                 <h2 style={styles.heading}>Choose Exercise</h2>
             </div>
@@ -118,6 +142,56 @@ const Homepage = () => {
     );
 };
 
+const ProfileTab = () => {
+
+    const [weight, setWeight] = useState('');
+    const [height, setHeight] = useState('');
+    
+    const handleNice= () => {
+        alert('Progress Saved!');
+        window.location.href = '/homepage';
+    };
+
+    return (
+    <div className="body3">
+        <div className="dashboard-container">
+            <h2 style={styles.heading}>Profile Settings</h2>
+        </div>
+        <div styles={styles.container}>
+            <h3 styles={styles.text3}>Height:</h3>
+            <h3 styles={styles.text3}>Weight:</h3>
+            <h3 styles={styles.text3}>BMI:</h3>
+        </div>
+        <div>
+            <label htmlFor="height" style={styles.label}>Height</label>
+                <input
+                    type="number"
+                    id="height"
+                    placeholder="Enter your height in cm"
+                    value={height}
+                    onChange={(e) => setHeight(e.target.value)}
+                    style={styles.input}
+                />
+        </div>
+        <div>
+            <label htmlFor="weight" style={styles.label}>Weight</label>
+                <input
+                    type="number"
+                    id="weight"
+                    placeholder="Enter your weight in kg"
+                    value={weight}
+                    onChange={(e) => setWeight(e.target.value)}
+                    style={styles.input}
+                />
+        </div>
+        <div className="dashboard-container">
+            <h2 style={styles.heading}>Progress Report</h2>
+        </div>
+        <button type="submit" style={styles.button} onClick={handleNice}>Save Profile</button>
+    </div>
+    );
+};
+
 export default Homepage;
 
 const styles = {
@@ -125,7 +199,7 @@ const styles = {
         padding: '50px',
         borderRadius: '50px',
         backgroundColor: 'transparent',
-        border: '5px solid transparent',
+        border: '5px solid transparnt',
     },
     exercise: {
         display: 'grid',
@@ -144,6 +218,17 @@ const styles = {
         fontWeight: 'bold',
         lineHeight: '65px',
         color: '#fff',
+    },
+    label: {
+        marginBottom: '5px',
+        color: '#fff',
+    },
+    input: {
+        padding: '10px',
+        marginBottom: '10px',
+        border: '1px solid #ccc',
+        borderRadius: '10px',
+        display: 'block',
     },
     text: {
         textAlign: 'left',
@@ -169,6 +254,13 @@ const styles = {
         textAlign: 'center',
         justifyContent: 'center',
     },
+    text3: {
+        fontSize: '10px',
+        color: '#000000',
+        fontWeight: '10px',
+        whiteSpace: 'nowrap',
+        textAlign: 'center',
+    },
     reco: {
         borderRadius: '10px',
         cursor: 'pointer',
@@ -191,5 +283,17 @@ const styles = {
         alignItems: 'left',
         whiteSpace: 'nowrap',
         marginLeft: '5px',
+    },
+    button: {
+        padding: '15px 35px',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        backgroundColor: '#DFA100',
+        color: '#fff',
+        border: '2px solid #DFA100',
+        display: 'flex',
+        justifyContent: 'center', 
+        alignItems: 'center',
+        margin: '5px', 
     },
 };

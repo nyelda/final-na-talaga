@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../Navbar.css';
 
 const NavBar = () => {
-    const [activeTab, setActiveTab] = useState('navigate');
+    const [activeTab, setActiveTab] = useState('home');
 
     const handleTabChange = (tab) => {
         setActiveTab(tab);
@@ -11,14 +11,15 @@ const NavBar = () => {
     return (
         <div className="body">
             <div className="dashboard-container">
-                <h1 style={styles.font1}> Team 26 </h1>
                 <div className="navigation">
-                    <div className={`nav-item ${activeTab === 'navigate' ? 'active' : ''}`} onClick={() => handleTabChange('exercises')}>Home</div>
-                    <div className={`nav-item ${activeTab === 'navigate' ? 'active' : ''}`} onClick={() => handleTabChange('exercises')}>About Us</div>
-                    <div className={`nav-item ${activeTab === 'navigate' ? 'active' : ''}`} onClick={() => handleTabChange('exercises')}>Contact Us</div>
+                    <div className={`nav-item ${activeTab === 'home' ? 'active' : ''}`} onClick={() => handleTabChange('home')}>Home</div>
+                    <div className={`nav-item ${activeTab === 'about' ? 'active' : ''}`} onClick={() => handleTabChange('about')}>About</div>
+                    <div className={`nav-item ${activeTab === 'contact' ? 'active' : ''}`} onClick={() => handleTabChange('contact')}>Contact Us</div>
                 </div>
                 <div className="tab-content">
-                    {activeTab === 'navigate' && <HomeTab />}
+                    {activeTab === 'home' && <HomeTab />}
+                    {activeTab === 'about' && <AboutTab />}
+                    {activeTab === 'contacts' && <ContactTab />}
                 </div>
             </div>
         </div>
@@ -47,6 +48,30 @@ const HomeTab = () => {
     );
 };
 
+const AboutTab = () => {
+    return (
+        <div>
+            <h1 style={styles.font2}> About the Developers </h1>
+            <div style={styles.container2}>
+                <h2 style={styles.font3}>Renzo James M. Cabanos</h2>
+                <h2 style={styles.font3}>Karla Danielle T. Jayme</h2>
+                <h2 style={styles.font3}>Selwyn Charlz Angelo Z. Landayan</h2>
+                <h2 style={styles.font3}>Daniel Joven U. Suyat</h2>
+                <h2 style={styles.font3}>Arvin A. Tagongtong</h2>
+            </div>
+        </div>
+    )
+}
+
+const ContactTab = () => {
+    return (
+        <div>
+
+        </div>
+    )
+}
+
+
 export default NavBar;
 
 const styles = {
@@ -59,6 +84,12 @@ const styles = {
         alignItems: 'center',
         position: 'relative',
         justifyContent: 'center',
+    },
+    container2: {
+        padding: '50px',
+        borderRadius: '50px',
+        backgroundColor: 'transparent',
+        border: '5px solid transparnt',
     },
     button: {
         padding: '15px 35px',
@@ -98,5 +129,24 @@ const styles = {
         letterSpacing: '0em',
         textAlign: 'left',
         color: '#fff',
-    }
+    },
+    font2: {
+        fontFamily: 'Rubik',
+        fontSize: '30px',
+        fontWeight: '800',
+        lineHeight: '36px',
+        letterSpacing: '0em',
+        textAlign: 'center',
+        color: '#fff',
+    },
+    font3: {
+        fontFamily: 'Rubik',
+        fontSize: '15px',
+        fontWeight: '800',
+        lineHeight: '36px',
+        letterSpacing: '0em',
+        textAlign: 'left',
+        color: '#fff',
+        whiteSpace: 'nowrap',
+    },
 };

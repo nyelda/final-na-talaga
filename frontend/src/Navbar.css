@@ -2,7 +2,39 @@
     background-image: url('../public/gym7.jpg'); 
     background-size: cover;
     background-position: center;
-    height: auto;
+    height: 100vh;
+    width: 100%;
+}
+
+.body1 {
+  background-image: url('../public/gym7.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  width: 100%;
+}
+
+.body2 {
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  width: 100%;
+}
+
+.body3 {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.video{
+  background-image: url('../public/bicep.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 15px;
+  width: 121%;
 }
 
 .picture {
@@ -116,12 +148,13 @@
   }
   
   .nav-item:hover {
-    background-color: #f0f0f0;
+    background-color: #FFFF00;
   }
   
   .active {
     background-color: transparent;
-    color: #FFFF00;
+    color:  #000000;
+   
   }
   
   .tab-content {

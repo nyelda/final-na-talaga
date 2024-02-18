@@ -5,6 +5,11 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const handleLogin = () => {
+        alert('Proceeding to Homepage');
+        window.location.href = '/homepage';
+    };
+
     return (
         <div className="body">
             <div className="dashboard-container">
@@ -33,7 +38,7 @@ const Login = () => {
                                 />
                             </div>
                     </form>
-                    <button type="submit" style={styles.button}>Login</button>
+                    <button type="submit" style={styles.button} onClick={handleLogin}>Login</button>
                         <div style={styles.signupLink}>
                             Don't have an account? <Link to="/signup" style={styles.link}>Sign up here</Link>.
                          </div>

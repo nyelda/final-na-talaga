@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Webcam from 'react-webcam';
+import '../Navbar.css';
 
 const BMI = () => {
     const [weight, setWeight] = useState('');
