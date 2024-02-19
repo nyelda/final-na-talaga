@@ -108,6 +108,6 @@ const styles = {
         display: 'flex',
         justifyContent: 'center', 
         alignItems: 'center',
-        margin: '5px', 
+        margin: '5px',
     },
 };
