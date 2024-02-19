@@ -3,6 +3,7 @@ import Webcam from 'react-webcam';
 
 const Exercise = () => {
     const [showCamera, setShowCamera] = useState(false);
+    const [ExerCount, setExerCount] = useState(0);
 
     const handleHome = () => {
         alert('Proceeding to Homepage');
@@ -11,6 +12,11 @@ const Exercise = () => {
 
     const cameraClick = () => {
         setShowCamera(true);
+    };
+
+    const ExerClick = () => {
+        setExerCount(ExerCount + 1);
+        cameraClick();
     };
 
     return (
@@ -22,7 +28,10 @@ const Exercise = () => {
 
                     </video>
                         <div style={styles.webContainer}>
-                            <button type="submit" style={styles.button} onClick={cameraClick}>Click here to Start</button>
+                            <button type="submit" style={styles.button} onClick={cameraClick}>Open Camera</button>
+                                <div className="button1">
+                                    <button type="submit" style={styles.button1} onClick={ExerClick}>Start Workout</button>
+                                </div>
                             <div style={styles.camera}>
                                 {showCamera && (
                                 <Webcam 
@@ -32,10 +41,11 @@ const Exercise = () => {
                                 )}
                             </div>
                             <div style={styles.text}>
-                                <h2>Set:</h2>
+                                <h2>Set: {ExerCount} Sets</h2>
+                                <h2>Duration:</h2>
                                 <h2>Rep:</h2>
                             </div>
-                            <button type="submit" style={styles.button} onClick={handleHome}>End Workout</button>
+                            <button type="submit" style={styles.button} onClick={handleHome}>Finish Workout</button>
                         </div>
                 </div>
             </div>
@@ -55,7 +65,7 @@ const styles = {
         color: '#fff',
     },
     webContainer: {
-        padding: '50px',
+        padding: '20px',
         cursor: 'pointer',
         backgroundColor: '#000000',
         border: '2px solid #000000',
@@ -83,8 +93,16 @@ const styles = {
         color: '#fff',
         border: '2px solid #DFA100',
         display: 'flex',
-        justifyContent: 'center', 
-        alignItems: 'center',
+        margin: '5px', 
+    },
+    button1: {
+        padding: '15px 35px',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        backgroundColor: '#DFA100',
+        color: '#fff',
+        border: '2px solid #DFA100',
+        alignItems: 'right',
         margin: '5px', 
     },
 };

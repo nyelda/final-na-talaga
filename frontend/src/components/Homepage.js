@@ -197,7 +197,7 @@ export default Homepage;
 const styles = {
     container: {
         padding: '50px',
-        borderRadius: '50px',
+        borderRadius: '40px',
         backgroundColor: 'transparent',
         border: '5px solid transparnt',
     },
