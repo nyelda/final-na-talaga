@@ -36,7 +36,7 @@ const HomeTab = () => {
             <div className="dashboard-container">
                 <h2 style={styles.heading}>Choose Exercise</h2>
             </div>
-            <div style={styles.container}>
+            <div className="exercise">
                 <div style={styles.exercise}>
                     <div className="picture">
                         <h1 style={styles.text}>BARBELL BICEPS CURL</h1>
@@ -202,14 +202,12 @@ const styles = {
         border: '5px solid transparnt',
     },
     exercise: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gridColumnGap: '20px', 
-        gridRowGap: '20px', 
         padding: '20px',
+        paddingRight: '22px',
         borderRadius: '30px',
         backgroundColor: '#DFA100',
         marginBottom: '20px',
+        margin: '20px',
     },
     heading: {
         textAlign: 'center',

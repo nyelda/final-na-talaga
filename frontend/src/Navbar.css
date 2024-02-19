@@ -28,13 +28,26 @@
   width: 100%;
 }
 
-.video{
+.video {
   background-image: url('../public/bicep.jpg'); 
   background-size: cover;
   background-position: center;
   height: auto;
   border-radius: 15px;
   width: 121%;
+}
+
+.exercise {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 5fr 5fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: auto;
+  height: auto;
+  padding: 20px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  align-items: center;
 }
 
 .picture {
@@ -43,7 +56,7 @@
   background-position: center;
   height: auto;
   border-radius: 15px;
-  width: 121%;
+  width: auto;
 }
 
 .picture2 {
@@ -52,7 +65,7 @@
   background-position: center;
   height: auto;
   border-radius: 15px;
-  width: 175%;
+  width: auto;
 }
 
 .picture3 {
@@ -61,7 +74,7 @@
   background-position: center;
   height: auto;
   border-radius: 15px;
-  width: 185%;
+  width: auto;
 }
 
 .picture4 {
@@ -70,7 +83,7 @@
   background-position: center;
   height: auto;
   border-radius: 15px;
-  width: 121%;
+  width: auto;
 }
 
 .picture5 {
@@ -79,7 +92,7 @@
   background-position: center;
   height: auto;
   border-radius: 15px;
-  width: 121%;
+  width: auto;
 }
 
 .picture6 {
@@ -88,7 +101,7 @@
   background-position: center;
   height: auto;
   border-radius: 15px;
-  width: 121%;
+  width: auto;
 }
 
 .picture7 {
@@ -97,7 +110,7 @@
   background-position: center;
   height: auto;
   border-radius: 15px;
-  width: 121%;
+  width: auto;
 }
 
 .picture8 {
@@ -106,7 +119,7 @@
   background-position: center;
   height: auto;
   border-radius: 15px;
-  width: 225%;
+  width: auto;
 }
 
 .picture9 {
@@ -115,7 +128,7 @@
   background-position: center;
   height: auto;
   border-radius: 15px;
-  width: 121%;
+  width: auto;
 }
 
 .picture10 {
@@ -124,7 +137,7 @@
   background-position: center;
   border-radius: 15px;
   height: auto;
-  width: 225%;
+  width: auto;
 }
 
 .dashboard-container {
