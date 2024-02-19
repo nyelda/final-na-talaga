@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Webcam from 'react-webcam';
+import squat from '../components/vids/squat.mp4';
 
 const Exercise = () => {
     const [showCamera, setShowCamera] = useState(false);
@@ -24,8 +25,7 @@ const Exercise = () => {
             <div className="dashboard-container">
             <h2 style={styles.heading}>Start Workout</h2>
                 <div className="video">
-                    <video>
-
+                    <video src={squat} autoPlay loop muted>
                     </video>
                         <div style={styles.webContainer}>
                             <button type="submit" style={styles.button} onClick={cameraClick}>Open Camera</button>
