@@ -6,6 +6,37 @@ const BMI = () => {
     const [weight, setWeight] = useState('');
     const [showCamera, setShowCamera] = useState(false);
 
+    const handleBMI = (e) => {
+        e.preventDefault(); 
+        if (!weight) {
+            alert('Please fill in all fields.');
+            return;
+        }
+    
+        console.log(weight);
+        fetch("http://localhost:5000/exereg", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                weight: weight,
+            }),
+        })
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+            throw new Error('Failed to create account. Please try again.');
+        })
+        .then((data) => {
+            console.log(data, "userRegister")
+        })
+        .catch(error => {
+            console.error("Error Weight of user:", error);
+        });
+    };    
+
     const handleHome = () => {
         alert('Proceeding to Homepage');
         window.location.href = '/homepage';
@@ -47,7 +78,8 @@ const BMI = () => {
                                         <h2>Your Height:</h2>
                                         <h2>BMI:</h2>
                                         </div>
-                                <button type="submit" style={styles.button} onClick={handleHome}>Done</button>
+                                <button type="submit" style={styles.button} onClick={handleBMI}>Done Calculate</button>
+                                <button type="submit" style={styles.button1} onClick={handleHome}>Done</button>
                             </div>
             </div>
         </div>
@@ -109,5 +141,18 @@ const styles = {
         justifyContent: 'center', 
         alignItems: 'center',
         margin: '5px',
+    },
+    button1: {
+        padding: '15px 35px',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        backgroundColor: '#DFA100',
+        color: '#fff',
+        border: '2px solid #DFA100',
+        display: 'flex',
+        justifyContent: 'center', 
+        alignItems: 'center',
+        margin: '5px',
+        marginLeft: '300px',
     },
 };

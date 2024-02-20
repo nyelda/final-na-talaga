@@ -59,6 +59,23 @@ app.post("/login-user", async (req, res) => {
     }
 });
 
+require("./exerDetails");
+
+const Exer = mongoose.model("ExerInfo");
+
+app.post("/exereg", async (req, res) => {
+    const { weight, height } = req.body;
+    try {
+        await User.create({
+            weight,
+            height,
+        });
+        res.send({ status: "ok" });
+    } catch (error) {
+        res.send({ status: "error" });
+    }
+});
+
 
 app.listen(5000, () => {
     console.log("Server Started");
