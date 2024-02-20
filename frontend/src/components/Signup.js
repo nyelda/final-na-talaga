@@ -4,6 +4,33 @@ import { Link } from 'react-router-dom';
 const Signup = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Prevent form submission
+        console.log(username, password);
+        fetch("http://localhost:5000/register",{
+            method: "POST",
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body: JSON.stringify({
+                username: username, 
+                password: password,
+            }),
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data, "userRegister")
+            alert('Account Saved!');
+            // Reset input fields
+            setUsername('');
+            setPassword('');
+        })
+        .catch(error => {
+            console.error("Error registering user:", error);
+            alert('Error saving account. Please try again.');
+        });
+    };
 
     const handleBMI = () => {
         alert('Proceeding to Calculate BMI');
@@ -13,36 +40,37 @@ const Signup = () => {
     return (
         <div className="body">
             <div className="dashboard-container">
-                    <form style={styles.form}>
-                        <h2 style={styles.heading}>Signup</h2>
-                            <div>
-                                <label htmlFor="username" style={styles.label}>Username: </label>
-                                <input
-                                    type="text"
-                                    id="username"
-                                    placeholder="Enter your username"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    style={styles.input}
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="password" style={styles.label}>Password: </label>
-                                <input
-                                    type="password"
-                                    id="password"
-                                    placeholder="Enter your password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    style={styles.input}
-                                />
-                            </div>
-                    </form>
-                    <button type="submit" style={styles.button} onClick={handleBMI}>Create Account</button>
-            </div>
-                    <div style={styles.signupLink}>
-                        Already have an account? <Link to="/login" style={styles.link}>Login here</Link>.
+                <form onSubmit={handleSubmit} style={styles.form}> {/* Handle form submission */}
+                    <h2 style={styles.heading}>Signup</h2>
+                    <div>
+                        <label htmlFor="username" style={styles.label}>Username: </label>
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Enter your username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            style={styles.input}
+                        />
                     </div>
+                    <div>
+                        <label htmlFor="password" style={styles.label}>Password: </label>
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            style={styles.input}
+                        />
+                    </div>
+                    <button type="submit" style={styles.button1}>Create Account</button>
+                    <button type="button" style={styles.button} onClick={handleBMI}>Proceed to BMI</button>
+                </form>
+            </div>
+            <div style={styles.signupLink}>
+                Already have an account? <Link to="/login" style={styles.link}>Login here</Link>.
+            </div>
         </div>
     );
 };
@@ -84,7 +112,20 @@ const styles = {
         border: '2px solid #DFA100',
         display: 'flex',
         justifyContent: 'center', 
-        alignItems: 'center', 
+        alignItems: 'right',
+        marginLeft: '600px',
+    },
+    button1: {
+        padding: '15px 35px',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        backgroundColor: '#DFA100',
+        color: '#fff',
+        border: '2px solid #DFA100',
+        display: 'flex',
+        justifyContent: 'center',
+        marginRight: '600px',
+        margin: '10px',
     },
     signupLink: {
         marginTop: '10px',
