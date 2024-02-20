@@ -16,10 +16,6 @@ mongoose.connect(mongoUrl, {
 })
 .catch((e) => console.log(e));
 
-app.listen(5000, () => {
-    console.log("Server Started");
-});
-
 require("./userDetails");
 
 const User = mongoose.model("UserInfo");
@@ -27,6 +23,11 @@ const User = mongoose.model("UserInfo");
 app.post("/register", async (req, res) => {
     const { username, password } = req.body;
     try {
+        const oldUser = User.findOne({ email });
+
+        if (oldUser) {
+            res.send({ error: "User Exist" });
+        }
         await User.create({
             username,
             password,
@@ -37,3 +38,28 @@ app.post("/register", async (req, res) => {
     }
 });
 
+app.post("/login-user", async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const user = await User.findOne({ username });
+        if (!user) {
+            return res.status(404).json({ error: "User Not Found" });
+        }
+
+        const isPasswordValid = await user.comparePassword(password);
+        if (!isPasswordValid) {
+            return res.status(401).json({ error: "Invalid Password" });
+        }
+
+        res.status(200).json({ status: "success" });
+    } catch (error) {
+        console.error("Error logging in:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+
+app.listen(5000, () => {
+    console.log("Server Started");
+});

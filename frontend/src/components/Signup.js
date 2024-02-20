@@ -6,31 +6,44 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     
     const handleSubmit = (e) => {
-        e.preventDefault(); // Prevent form submission
+        e.preventDefault(); 
+        if (!username || !password) {
+            alert('Please fill in all fields.');
+            return;
+        }
+    
         console.log(username, password);
-        fetch("http://localhost:5000/register",{
+        fetch("http://localhost:5000/register", {
             method: "POST",
-            headers:{
-                "Content-Type":"application/json",
+            headers: {
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                username: username, 
+                username: username,
                 password: password,
             }),
         })
-        .then((res) => res.json())
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+            throw new Error('Failed to create account. Please try again.');
+        })
         .then((data) => {
             console.log(data, "userRegister")
             alert('Account Saved!');
-            // Reset input fields
             setUsername('');
             setPassword('');
         })
         .catch(error => {
             console.error("Error registering user:", error);
-            alert('Error saving account. Please try again.');
+            if (error.message.includes('409')) {
+                alert('Account already exists.');
+            } else {
+                alert('Error creating account. Please try again.');
+            }
         });
-    };
+    };    
 
     const handleBMI = () => {
         alert('Proceeding to Calculate BMI');

@@ -99,7 +99,7 @@ const HomeTab = () => {
                 </div>
                 <div style={styles.exercise}>
                     <div className="picture7">
-                        <h1 style={styles.text}>OVERHEAD RAISE</h1>
+                        <h1 style={styles.text}>OVERHEAD PRESS</h1>
                         <div style={styles.reco}>
                             <h3 style={styles.text2}>Recommended</h3>
                         </div>
