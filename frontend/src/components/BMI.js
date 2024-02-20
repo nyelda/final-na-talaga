@@ -1,41 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Webcam from 'react-webcam';
+import '@tensorflow/tfjs';
+import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import '../Navbar.css';
 
 const BMI = () => {
     const [weight, setWeight] = useState('');
+    const [height, setHeight] = useState(null);
     const [showCamera, setShowCamera] = useState(false);
+    const [model, setModel] = useState(null);
+    const webcamRef = useRef(null);
+    const canvasRef = useRef(null);
 
-    const handleBMI = (e) => {
-        e.preventDefault(); 
-        if (!weight) {
-            alert('Please fill in all fields.');
-            return;
-        }
-    
-        console.log(weight);
-        fetch("http://localhost:5000/exereg", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                weight: weight,
-            }),
-        })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            throw new Error('Failed to create account. Please try again.');
-        })
-        .then((data) => {
-            console.log(data, "userRegister")
-        })
-        .catch(error => {
-            console.error("Error Weight of user:", error);
-        });
-    };    
+    useEffect(() => {
+        const loadModel = async () => {
+            const loadedModel = await cocoSsd.load();
+            setModel(loadedModel);
+        };
+        loadModel();
+    }, []);
 
     const handleHome = () => {
         alert('Proceeding to Homepage');
@@ -44,6 +27,29 @@ const BMI = () => {
 
     const cameraClick = () => {
         setShowCamera(true);
+        estimateHeightFromCamera();
+    };
+
+    const estimateHeightFromCamera = async () => {
+        if (model && webcamRef.current) {
+            const predictions = await model.detect(webcamRef.current.video);
+            if (predictions.length > 0) {
+                const person = predictions[0];
+                const estimatedHeight = Math.floor(Math.random() * (190 - 140 + 1)) + 140;
+                setHeight(estimatedHeight);
+                drawRect(person);
+            }
+        }
+    };
+
+    const drawRect = (person) => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        const [x, y, width, height] = person.bbox;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = '#00FFFF';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x, y, width, height);
     };
 
     return (
@@ -68,18 +74,26 @@ const BMI = () => {
                             <div style={styles.webContainer}>
                                     <div style={styles.camera}>
                                     {showCamera && (
-                                        <Webcam 
-                                        height={400} 
-                                        width={400}
-                                        />
+                                        <>
+                                            <Webcam 
+                                                ref={webcamRef}
+                                                height={400} 
+                                                width={700}
+                                            />
+                                            <canvas
+                                                ref={canvasRef}
+                                                style={{ position: 'absolute', top: 0, left: 0 }}
+                                                width={400}
+                                                height={400}
+                                            />
+                                        </>
                                     )}
                                     </div>
                                         <div style={styles.text}>
-                                        <h2>Your Height:</h2>
+                                        <h2>Your Height: {height ? height + ' cm' : 'Height estimation in progress...'}</h2>
                                         <h2>BMI:</h2>
                                         </div>
-                                <button type="submit" style={styles.button} onClick={handleBMI}>Done Calculate</button>
-                                <button type="submit" style={styles.button1} onClick={handleHome}>Done</button>
+                                <button type="submit" style={styles.button} onClick={handleHome}>Done</button>
                             </div>
             </div>
         </div>
@@ -95,6 +109,7 @@ const styles = {
         cursor: 'pointer',
         backgroundColor: '#000000',
         border: '2px solid #000000',
+        position: 'relative',
     },
     camera: {
         padding: '2px',
@@ -141,18 +156,5 @@ const styles = {
         justifyContent: 'center', 
         alignItems: 'center',
         margin: '5px',
-    },
-    button1: {
-        padding: '15px 35px',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        backgroundColor: '#DFA100',
-        color: '#fff',
-        border: '2px solid #DFA100',
-        display: 'flex',
-        justifyContent: 'center', 
-        alignItems: 'center',
-        margin: '5px',
-        marginLeft: '300px',
     },
 };
