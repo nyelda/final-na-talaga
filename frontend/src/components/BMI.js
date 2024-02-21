@@ -69,7 +69,7 @@ const BMI = () => {
                             </div>
                             <div>
                             <label htmlFor="height" style={styles.label}>Height</label>
-                            <button type="submit" style={styles.button} onClick={cameraClick}> Click here to see your height </button>
+                            <button type="submit" style={styles.button} onClick={cameraClick}> Estimate Height </button>
                             </div>
                             <div style={styles.webContainer}>
                                     <div style={styles.camera}>
