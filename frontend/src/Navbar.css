@@ -49,6 +49,18 @@
   align-items: center;
 }
 
+.user {
+  background-image: url('../public/user.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 15px;
+  width: auto;
+  padding: 50px;
+  margin-right: 800px;
+  justify-content: center;
+}
+
 .picture {
   background-image: url('../public/bicep.jpg'); 
   background-size: cover;

@@ -148,6 +148,9 @@ const ProfileTab = () => {
             <h2 style={styles.heading}>Profile Settings</h2>
         </div>
         <div styles={styles.container}>
+            <div className="user">
+                <h3>Name:</h3>
+            </div>
             <h3 styles={styles.text3}>Height:</h3>
             <h3 styles={styles.text3}>Weight:</h3>
             <h3 styles={styles.text3}>BMI:</h3>
@@ -236,7 +239,7 @@ const styles = {
     },
     text2: {
         fontSize: '10px',
-        color: '#000000',
+        color: '#fff',
         fontWeight: '10px',
         whiteSpace: 'nowrap',
         textAlign: 'center',
