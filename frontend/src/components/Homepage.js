@@ -118,16 +118,6 @@ const HomeTab = () => {
                     </div>
                 </div>
                 <div style={styles.exercise}>
-                    <div className="picture9">
-                        <h1 style={styles.text}>RUSSIAN TWIST</h1>
-                        <div style={styles.reco}>
-                            <h3 style={styles.text2}>Recommended</h3>
-                        </div>
-                        <h2 style={styles.text1}>DEAD LIFT | 3 Minutes </h2>
-                        <button type="submit" style={styles.start} onClick={handleExer}>Click to Start</button>
-                    </div>
-                </div>
-                <div style={styles.exercise}>
                     <div className="picture10">
                         <h1 style={styles.text}>SQUAT</h1>
                         <div style={styles.reco}>
