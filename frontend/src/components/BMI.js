@@ -33,19 +33,25 @@ const BMI = () => {
     const estimateHeightFromCamera = async () => {
         if (model && webcamRef.current) {
             const predictions = await model.detect(webcamRef.current.video);
-            if (predictions.length > 0) {
-                const person = predictions[0];
+            const fullBodyPrediction = predictions.find(prediction => prediction.class === 'person' && coversFullBody(prediction));
+            if (fullBodyPrediction) {
                 const estimatedHeight = Math.floor(Math.random() * (190 - 140 + 1)) + 140;
                 setHeight(estimatedHeight);
-                drawRect(person);
+                drawRect(fullBodyPrediction);
             }
         }
     };
 
-    const drawRect = (person) => {
+    const coversFullBody = (prediction) => {
+        const [, , , height] = prediction.bbox;
+        // Adjust this threshold according to your requirements
+        return height >= webcamRef.current.video.height * 0.8; // Check if height covers at least 80% of the frame height
+    };
+
+    const drawRect = (prediction) => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
-        const [x, y, width, height] = person.bbox;
+        const [x, y, width, height] = prediction.bbox;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.strokeStyle = '#00FFFF';
         ctx.lineWidth = 2;
@@ -55,46 +61,46 @@ const BMI = () => {
     return (
         <div className="body">
             <div className="dashboard-container">
-                        <h2 style={styles.heading}>Calculate BMI</h2>
-                            <div>
-                                <label htmlFor="weight" style={styles.label}>Weight</label>
-                                <input
-                                    type="number"
-                                    id="weight"
-                                    placeholder="Enter your weight in kg"
-                                    value={weight}
-                                    onChange={(e) => setWeight(e.target.value)}
-                                    style={styles.input}
+                <h2 style={styles.heading}>Calculate BMI</h2>
+                <div>
+                    <label htmlFor="weight" style={styles.label}>Weight</label>
+                    <input
+                        type="number"
+                        id="weight"
+                        placeholder="Enter your weight in kg"
+                        value={weight}
+                        onChange={(e) => setWeight(e.target.value)}
+                        style={styles.input}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="height" style={styles.label}>Height</label>
+                    <button type="submit" style={styles.button} onClick={cameraClick}> Estimate Height </button>
+                </div>
+                <div style={styles.webContainer}>
+                    <div style={styles.camera}>
+                        {showCamera && (
+                            <>
+                                <Webcam
+                                    ref={webcamRef}
+                                    height={400}
+                                    width={700}
                                 />
-                            </div>
-                            <div>
-                            <label htmlFor="height" style={styles.label}>Height</label>
-                            <button type="submit" style={styles.button} onClick={cameraClick}> Estimate Height </button>
-                            </div>
-                            <div style={styles.webContainer}>
-                                    <div style={styles.camera}>
-                                    {showCamera && (
-                                        <>
-                                            <Webcam 
-                                                ref={webcamRef}
-                                                height={400} 
-                                                width={700}
-                                            />
-                                            <canvas
-                                                ref={canvasRef}
-                                                style={{ position: 'absolute', top: 0, left: 0 }}
-                                                width={400}
-                                                height={400}
-                                            />
-                                        </>
-                                    )}
-                                    </div>
-                                        <div style={styles.text}>
-                                        <h2>Your Height: {height ? height + ' cm' : 'Height estimation in progress...'}</h2>
-                                        <h2>BMI:</h2>
-                                        </div>
-                                <button type="submit" style={styles.button} onClick={handleHome}>Done</button>
-                            </div>
+                                <canvas
+                                    ref={canvasRef}
+                                    style={{ position: 'absolute', top: 0, left: 0 }}
+                                    width={400}
+                                    height={400}
+                                />
+                            </>
+                        )}
+                    </div>
+                    <div style={styles.text}>
+                        <h2>Your Height: {height ? height + ' cm' : 'Height estimation in progress...'}</h2>
+                        <h2>BMI:</h2>
+                    </div>
+                    <button type="submit" style={styles.button} onClick={handleHome}>Done</button>
+                </div>
             </div>
         </div>
     );
