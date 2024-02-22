@@ -20,46 +20,6 @@ const BMI = () => {
         loadModel();
     }, []);
 
-    const handleSubmit = (e) => {
-        e.preventDefault(); 
-        if (!weight || !height) {
-            alert('Please fill in all fields.');
-            return;
-        }
-    
-        console.log(weight, height);
-        fetch("http://localhost:5000/exereg", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                weight: weight,
-                height: height,
-            }),
-        })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            throw new Error('Please try again.');
-        })
-        .then((data) => {
-            console.log(data, "exerRegister")
-            alert('BMI Saved!');
-            setWeight('');
-            setHeight('');
-        })
-        .catch(error => {
-            console.error("Error registering BMI:", error);
-            if (error.message.includes('409')) {
-                alert('Account already exists.');
-            } else {
-                alert('Error creating account. Please try again.');
-            }
-        });
-    };    
-
     const handleHome = () => {
         alert('Proceeding to Homepage');
         window.location.href = '/homepage';
@@ -77,6 +37,18 @@ const BMI = () => {
             return bmi.toFixed(2);
         }
         return '';
+    };
+
+    const classifyBMI = (bmi) => {
+        if (bmi < 18.5) {
+            return 'Underweight';
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+            return 'Healthy Weight';
+        } else if (bmi >= 25 && bmi <= 29.9) {
+            return 'Overweight';
+        } else {
+            return 'Obese';
+        }
     };
 
     const estimateHeightFromCamera = async () => {
@@ -146,6 +118,7 @@ const BMI = () => {
                     <div style={styles.text}>
                         <h2>Your Height: {height ? height + ' cm' : 'Height estimation in progress...'}</h2>
                         <h2>BMI: {calculateBMI()}</h2>
+                        <h2>Classification: {classifyBMI(parseFloat(calculateBMI()))}</h2>
                     </div>
                     <button type="submit" style={styles.button} onClick={handleHome}>Done</button>
                 </div>
