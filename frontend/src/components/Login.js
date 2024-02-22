@@ -6,14 +6,14 @@ const Login = () => {
     const [password, setPassword] = useState('');
     
     const handleLogin = (e) => {
-        alert("Login Successful");
-        window.location.href = "/homepage";
-        
         if (!username || !password) {
             alert('Please fill in all fields.');
             return;
+        } else {
+            alert("Login Successful");
+            window.location.href = "/homepage";
         }
-        
+
         e.preventDefault(); 
         console.log(username, password);
         

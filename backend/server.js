@@ -46,12 +46,6 @@ app.post("/login-user", async (req, res) => {
         if (!user) {
             return res.status(404).json({ error: "User Not Found" });
         }
-
-        const isPasswordValid = await user.comparePassword(password);
-        if (!isPasswordValid) {
-            return res.status(401).json({ error: "Invalid Password" });
-        }
-
         res.status(200).json({ status: "success" });
     } catch (error) {
         console.error("Error logging in:", error);

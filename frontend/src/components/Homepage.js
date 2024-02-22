@@ -171,6 +171,18 @@ const ProfileTab = () => {
         return '';
     };
 
+    const classifyBMI = (bmi) => {
+        if (bmi < 18.5) {
+            return 'Underweight';
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+            return 'Healthy Weight';
+        } else if (bmi >= 25 && bmi <= 29.9) {
+            return 'Overweight';
+        } else {
+            return 'Obese';
+        }
+    };
+
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
     };
@@ -194,11 +206,13 @@ const ProfileTab = () => {
                         <h3 style={styles.text4}>Name: </h3>
                         <h3 style={styles.text3}>{username}</h3>
                         <h3 style={styles.text4}>Height:</h3>
-                        <h3 style={styles.text3}>{height ? `${height} cm` : ''}</h3>
+                        <h3 style={styles.text3}>{height ? `${height} m` : ''}</h3>
                         <h3 style={styles.text4}>Weight:</h3>
                         <h3 style={styles.text3}>{weight ? `${weight} kg` : ''}</h3>
                         <h3 style={styles.text4}>BMI: </h3>
                         <h3 style={styles.text3}>{calculateBMI()}</h3>
+                        <h3 style={styles.text4}>Category:</h3>
+                        <h3 style={styles.text3}>{classifyBMI(calculateBMI())}</h3>
                     </div>
                  </div>
         <div>
@@ -217,7 +231,7 @@ const ProfileTab = () => {
                 <input
                     type="number"
                     id="height"
-                    placeholder="Enter your height in cm"
+                    placeholder="Enter your height in m"
                     value={height}
                     onChange={(e) => setHeight(e.target.value)}
                     style={styles.input}
