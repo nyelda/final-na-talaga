@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../../Navbar.css';
+import '../Navbar.css';
 
-const Overweight = () => {
+const Healthy = () => {
     const [activeTab, setActiveTab] = useState('exercise');
 
     const handleTabChange = (tab) => {
@@ -261,7 +261,7 @@ const ProfileTab = () => {
     );
 };
 
-export default Overweight;
+export default Healthy;
 
 const styles = {
     container: {
