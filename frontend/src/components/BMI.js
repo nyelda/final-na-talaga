@@ -21,9 +21,29 @@ const BMI = () => {
     }, []);
 
     const handleHome = () => {
-        alert('Proceeding to Homepage');
-        window.location.href = '/homepage';
+        const classification = classifyBMI(parseFloat(calculateBMI()));
+        let nextPage = '';
+        switch (classification) {
+            case 'Underweight':
+                nextPage = '/Underweight';
+                break;
+            case 'Healthy Weight':
+                nextPage = '/HealthyWeight';
+                break;
+            case 'Overweight':
+                nextPage = '/Overweight';
+                break;
+            case 'Obese':
+                nextPage = '/Obese';
+                break;
+            default:
+                nextPage = '/homepage'; // Default to homepage if classification is not found
+                break;
+        }
+        alert(`Proceeding to ${classification}`);
+        window.location.href = nextPage;
     };
+    
 
     const cameraClick = () => {
         setShowCamera(true);
@@ -52,6 +72,7 @@ const BMI = () => {
             return ''
         }
     };
+
 
     const estimateHeightFromCamera = async () => {
         if (model && webcamRef.current) {
