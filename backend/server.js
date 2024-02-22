@@ -66,7 +66,7 @@ const Exer = mongoose.model("ExerInfo");
 app.post("/exereg", async (req, res) => {
     const { weight, height } = req.body;
     try {
-        await User.create({
+        await Exer.create({
             weight,
             height,
         });

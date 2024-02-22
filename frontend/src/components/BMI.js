@@ -20,6 +20,46 @@ const BMI = () => {
         loadModel();
     }, []);
 
+    const handleSubmit = (e) => {
+        e.preventDefault(); 
+        if (!weight || !height) {
+            alert('Please fill in all fields.');
+            return;
+        }
+    
+        console.log(weight, height);
+        fetch("http://localhost:5000/exereg", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                weight: weight,
+                height: height,
+            }),
+        })
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+            throw new Error('Please try again.');
+        })
+        .then((data) => {
+            console.log(data, "exerRegister")
+            alert('BMI Saved!');
+            setWeight('');
+            setHeight('');
+        })
+        .catch(error => {
+            console.error("Error registering BMI:", error);
+            if (error.message.includes('409')) {
+                alert('Account already exists.');
+            } else {
+                alert('Error creating account. Please try again.');
+            }
+        });
+    };    
+
     const handleHome = () => {
         alert('Proceeding to Homepage');
         window.location.href = '/homepage';

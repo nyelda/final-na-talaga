@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 const ExerDetailsSchema = new mongoose.Schema(
     {
-        weight: number,
-        height: number,
+        weight: String,
+        height: String,
     },
     {
         collection: "ExerInfo",
