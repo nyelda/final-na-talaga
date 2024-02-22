@@ -26,9 +26,44 @@ const Homepage = () => {
 
 const HomeTab = () => {
 
-    const handleExer = () => {
+    const handleCurl = () => {
         alert('Are you READY? READY!');
-        window.location.href = '/exercise';
+        window.location.href = '/curl';
+    };
+
+    const handleRow = () => {
+        alert('Are you READY? READY!');
+        window.location.href = '/row';
+    };
+
+    const handleJack = () => {
+        alert('Are you READY? READY!');
+        window.location.href = '/jack';
+    };
+
+    const handleRaise = () => {
+        alert('Are you READY? READY!');
+        window.location.href = '/raise';
+    };
+
+    const handleLunge = () => {
+        alert('Are you READY? READY!');
+        window.location.href = '/lunge';
+    };
+
+    const handleLift = () => {
+        alert('Are you READY? READY!');
+        window.location.href = '/lift';
+    };
+
+    const handlePushup = () => {
+        alert('Are you READY? READY!');
+        window.location.href = '/pushup';
+    };
+
+    const handleSquat = () => {
+        alert('Are you READY? READY!');
+        window.location.href = '/squat';
     };
 
     return(
@@ -44,7 +79,7 @@ const HomeTab = () => {
                             <h3 style={styles.text2}>Recommended</h3>
                         </div>
                         <h2 style={styles.text1}>LEGS & ARMS | 3 Minutes </h2>
-                        <button type="submit" style={styles.start} onClick={handleExer}>Click to Start</button>
+                        <button type="submit" style={styles.start} onClick={handleCurl}>Click to Start</button>
                     </div>
                 </div>
                 <div style={styles.exercise}>
@@ -54,7 +89,7 @@ const HomeTab = () => {
                             <h3 style={styles.text2}>Recommended</h3>
                         </div>
                         <h2 style={styles.text1}>DEAD LIFT | 3 Minutes </h2>
-                        <button type="submit" style={styles.start} onClick={handleExer}>Click to Start</button>
+                        <button type="submit" style={styles.start} onClick={handleRow}>Click to Start</button>
                     </div>
                 </div>
                 <div style={styles.exercise}>
@@ -64,7 +99,7 @@ const HomeTab = () => {
                             <h3 style={styles.text2}>Recommended</h3>
                         </div>
                         <h2 style={styles.text1}>CHEST & ARMS | 3 Minutes </h2>
-                        <button type="submit" style={styles.start} onClick={handleExer}>Click to Start</button>
+                        <button type="submit" style={styles.start} onClick={handleLift}>Click to Start</button>
                     </div>
                 </div>
                 <div style={styles.exercise}>
@@ -74,7 +109,7 @@ const HomeTab = () => {
                             <h3 style={styles.text2}>Recommended</h3>
                         </div>
                         <h2 style={styles.text1}>DEAD LIFT | 3 Minutes </h2>
-                        <button type="submit" style={styles.start} onClick={handleExer}>Click to Start</button>
+                        <button type="submit" style={styles.start} onClick={handleJack}>Click to Start</button>
                     </div>
                 </div>
                 <div style={styles.exercise}>
@@ -84,7 +119,7 @@ const HomeTab = () => {
                             <h3 style={styles.text2}>Recommended</h3>
                         </div>
                         <h2 style={styles.text1}>CHEST & ARMS | 3 Minutes </h2>
-                        <button type="submit" style={styles.start} onClick={handleExer}>Click to Start</button>
+                        <button type="submit" style={styles.start} onClick={handleRaise}>Click to Start</button>
                     </div>
                 </div>
                 <div style={styles.exercise}>
@@ -94,7 +129,7 @@ const HomeTab = () => {
                             <h3 style={styles.text2}>Recommended</h3>
                         </div>
                         <h2 style={styles.text1}>DEAD LIFT | 3 Minutes </h2>
-                        <button type="submit" style={styles.start} onClick={handleExer}>Click to Start</button>
+                        <button type="submit" style={styles.start} onClick={handleLunge}>Click to Start</button>
                     </div>
                 </div>
                 <div style={styles.exercise}>
@@ -104,7 +139,7 @@ const HomeTab = () => {
                             <h3 style={styles.text2}>Recommended</h3>
                         </div>
                         <h2 style={styles.text1}>DEAD LIFT | 3 Minutes </h2>
-                        <button type="submit" style={styles.start} onClick={handleExer}>Click to Start</button>
+                        <button type="submit" style={styles.start} onClick={handlePushup}>Click to Start</button>
                     </div>
                 </div>
                 <div style={styles.exercise}>
@@ -114,7 +149,7 @@ const HomeTab = () => {
                             <h3 style={styles.text2}>Recommended</h3>
                         </div>
                         <h2 style={styles.text1}>DEAD LIFT | 3 Minutes </h2>
-                        <button type="submit" style={styles.start} onClick={handleExer}>Click to Start</button>
+                        <button type="submit" style={styles.start} onClick={handleSquat}>Click to Start</button>
                     </div>
                 </div>
             </div>
