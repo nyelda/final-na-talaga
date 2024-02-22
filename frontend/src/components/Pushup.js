@@ -21,7 +21,7 @@ const Pushup = () => {
     };
 
     return (
-        <div className="body">
+        <div className="body3">
             <div className="dashboard-container">
             <h2 style={styles.heading}>Start Workout</h2>
                 <div className="video">
