@@ -302,7 +302,7 @@ const styles = {
     },
     text2: {
         fontSize: '10px',
-        color: '#fff',
+        color: '#000000',
         fontWeight: '10px',
         whiteSpace: 'nowrap',
         textAlign: 'center',

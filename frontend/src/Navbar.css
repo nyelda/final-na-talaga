@@ -34,6 +34,8 @@
   height: auto;
   border-radius: 15px;
   width: 121%;
+  justify-content: center;
+  align-items: center;
 }
 
 .exercise {
@@ -193,12 +195,7 @@
   }
 
   .button1 {
-    border-radius: 10px;
-    background-color: #DFA100;
-    color: #fff;
-    border: 2px solid #DFA100;
     display: flex;
     justify-content: center;
-    margin: 10px;
-    margin-left: 700px;
+    margin-left: 600px;
   }

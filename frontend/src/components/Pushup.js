@@ -26,8 +26,8 @@ const Pushup = () => {
             <h2 style={styles.heading}>Start Workout</h2>
                 <div className="video">
                     <video src={pushup} autoPlay loop muted
-                    height={400} 
-                    width={1000}>
+                    height={600} 
+                    width={800}>
                     </video>
                         <div style={styles.webContainer}>
                             <button type="submit" style={styles.button} onClick={cameraClick}>Open Camera</button>
@@ -38,7 +38,7 @@ const Pushup = () => {
                                 {showCamera && (
                                 <Webcam 
                                 height={500} 
-                                width={1000}
+                                width={740}
                                 />
                                 )}
                             </div>
@@ -72,6 +72,7 @@ const styles = {
         backgroundColor: '#000000',
         border: '2px solid #000000',
         borderRadius: '20px',
+        marginRight: '170px',
     },
     camera: {
         padding: '2px',
