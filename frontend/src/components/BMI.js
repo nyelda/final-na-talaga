@@ -46,7 +46,9 @@ const BMI = () => {
 
     const cameraClick = () => {
         setShowCamera(true);
-        estimateHeightFromCamera();
+        setTimeout(() => {
+            estimateHeightFromCamera();
+        }, 5000); // Delay of 5 seconds (5000 milliseconds)
     };
 
     const calculateBMI = () => {
@@ -120,22 +122,23 @@ const BMI = () => {
                     <button type="submit" style={styles.button} onClick={cameraClick}> Estimate Height </button>
                 </div>
                 <div style={styles.webContainer}>
-                    <div style={styles.camera}>
-                        {showCamera && (
+                {showCamera && (
                             <>
                                 <Webcam
                                     ref={webcamRef}
-                                    height={400}
                                     width={700}
+                                    height={400}
                                 />
                                 <canvas
                                     ref={canvasRef}
                                     style={{ position: 'absolute', top: 0, left: 0 }}
-                                    width={400}
+                                    width={700}
                                     height={400}
                                 />
                             </>
                         )}
+                    <div style={styles.camera}>
+
                     </div>
                     <div style={styles.text}>
                         <h2>Your Height: {height ? height + ' cm' : 'Height estimation in progress...'}</h2>
@@ -167,7 +170,6 @@ const styles = {
         backgroundColor: '#fff',
         color: '#fff',
         border: '2px solid #fff',
-        alignItems: 'center',
     },
     heading: {
         textAlign: 'center',
