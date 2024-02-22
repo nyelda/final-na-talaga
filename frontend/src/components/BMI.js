@@ -30,6 +30,15 @@ const BMI = () => {
         estimateHeightFromCamera();
     };
 
+    const calculateBMI = () => {
+        if (height && weight) {
+            const heightInMeters = height / 100;
+            const bmi = weight / (heightInMeters * heightInMeters);
+            return bmi.toFixed(2);
+        }
+        return '';
+    };
+
     const estimateHeightFromCamera = async () => {
         if (model && webcamRef.current) {
             const predictions = await model.detect(webcamRef.current.video);
@@ -44,8 +53,7 @@ const BMI = () => {
 
     const coversFullBody = (prediction) => {
         const [, , , height] = prediction.bbox;
-        // Adjust this threshold according to your requirements
-        return height >= webcamRef.current.video.height * 0.8; // Check if height covers at least 80% of the frame height
+        return height >= webcamRef.current.video.height * 0.8;
     };
 
     const drawRect = (prediction) => {
@@ -97,7 +105,7 @@ const BMI = () => {
                     </div>
                     <div style={styles.text}>
                         <h2>Your Height: {height ? height + ' cm' : 'Height estimation in progress...'}</h2>
-                        <h2>BMI:</h2>
+                        <h2>BMI:{calculateBMI()}</h2>
                     </div>
                     <button type="submit" style={styles.button} onClick={handleHome}>Done</button>
                 </div>

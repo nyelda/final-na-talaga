@@ -1,5 +1,5 @@
 .body {
-    background-image: url('../public/gym bg.jpg'); 
+    background-image: url('../public/gym-bg.jpg'); 
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -7,7 +7,7 @@
 }
 
 .body1 {
-  background-image: url('../public/gym bg.jpg'); 
+  background-image: url('../public/gym-bg.jpg'); 
   background-size: cover;
   background-position: center;
   height: auto;
@@ -24,7 +24,7 @@
 .body3 {
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: auto;
   width: 100%;
 }
 
