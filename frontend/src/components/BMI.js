@@ -79,18 +79,6 @@ const BMI = () => {
         return '';
     };
 
-    const getBMICategory = (bmi) => {
-        if (bmi < 18.5) {
-            return "Underweight";
-        } else if (bmi < 25) {
-            return "Normal weight";
-        } else if (bmi < 30) {
-            return "Overweight";
-        } else {
-            return "Obese";
-        }
-    };
-
     const estimateHeightFromCamera = async () => {
         if (model && webcamRef.current) {
             const predictions = await model.detect(webcamRef.current.video);
@@ -158,7 +146,6 @@ const BMI = () => {
                     <div style={styles.text}>
                         <h2>Your Height: {height ? height + ' cm' : 'Height estimation in progress...'}</h2>
                         <h2>BMI: {calculateBMI()}</h2>
-                        <h2>Category: {getBMICategory}</h2>
                     </div>
                     <button type="submit" style={styles.button} onClick={handleHome}>Done</button>
                 </div>
