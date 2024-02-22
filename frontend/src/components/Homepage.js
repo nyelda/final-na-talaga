@@ -190,15 +190,17 @@ const ProfileTab = () => {
         <div className="dashboard-container">
             <h2 style={styles.heading}>Profile Settings</h2>
                 <div className="user" />
-                <h3 style={styles.text4}>Name: </h3>
-                <h3 style={styles.text3}>{username}</h3>
-                <h3 style={styles.text4}>Height:</h3>
-                <h3 style={styles.text3}>{height ? `${height} cm` : ''}</h3>
-                <h3 style={styles.text4}>Weight:</h3>
-                <h3 style={styles.text3}>{weight ? `${weight} kg` : ''}</h3>
-                <h3 style={styles.text4}>BMI: </h3>
-                <h3 style={styles.text3}>{calculateBMI()}</h3>
-        </div>
+                    <div style={styles.container2}>
+                        <h3 style={styles.text4}>Name: </h3>
+                        <h3 style={styles.text3}>{username}</h3>
+                        <h3 style={styles.text4}>Height:</h3>
+                        <h3 style={styles.text3}>{height ? `${height} cm` : ''}</h3>
+                        <h3 style={styles.text4}>Weight:</h3>
+                        <h3 style={styles.text3}>{weight ? `${weight} kg` : ''}</h3>
+                        <h3 style={styles.text4}>BMI: </h3>
+                        <h3 style={styles.text3}>{calculateBMI()}</h3>
+                    </div>
+                 </div>
         <div>
             <label htmlFor="username" style={styles.label}>Username</label>
                 <input
@@ -257,6 +259,14 @@ const styles = {
         position: 'relative',
         justifyContent: 'center',
     },
+    container2: {
+        padding: '10px',
+        paddingLeft: '30px',
+        borderRadius: '30px',
+        backgroundColor: '#DFA100',
+        marginRight: '300px',
+        marginTop: '10px',
+    },
     exercise: {
         padding: '20px',
         paddingRight: '22px',
@@ -313,6 +323,7 @@ const styles = {
         color: '#fff',
         fontWeight: '10px',
         textAlign: 'left',
+        whiteSpace: 'nowrap',
     },
     text4: {
         fontSize: '20px',
