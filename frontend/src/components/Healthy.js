@@ -75,9 +75,7 @@ const HomeTab = () => {
                 <div style={styles.exercise}>
                     <div className="picture">
                         <h1 style={styles.text}>BARBELL BICEPS CURL</h1>
-                        <div style={styles.reco}>
-                            <h3 style={styles.text2}>Recommended</h3>
-                        </div>
+                        <div style={styles.reco1} />
                         <h2 style={styles.text1}>LEGS & ARMS | 3 Minutes </h2>
                         <button type="submit" style={styles.start} onClick={handleCurl}>Click to Start</button>
                     </div>
@@ -85,9 +83,7 @@ const HomeTab = () => {
                 <div style={styles.exercise}>
                     <div className="picture2">
                         <h1 style={styles.text}>BARBELL ROW</h1>
-                        <div style={styles.reco}>
-                            <h3 style={styles.text2}>Recommended</h3>
-                        </div>
+                        <div style={styles.reco1} />
                         <h2 style={styles.text1}>DEAD LIFT | 3 Minutes </h2>
                         <button type="submit" style={styles.start} onClick={handleRow}>Click to Start</button>
                     </div>
@@ -105,9 +101,7 @@ const HomeTab = () => {
                 <div style={styles.exercise}>
                     <div className="picture4">
                         <h1 style={styles.text}>JUMP & JACKS</h1>
-                        <div style={styles.reco}>
-                            <h3 style={styles.text2}>Recommended</h3>
-                        </div>
+                        <div style={styles.reco1} />
                         <h2 style={styles.text1}>DEAD LIFT | 3 Minutes </h2>
                         <button type="submit" style={styles.start} onClick={handleJack}>Click to Start</button>
                     </div>
@@ -115,9 +109,7 @@ const HomeTab = () => {
                 <div style={styles.exercise}>
                     <div className="picture5">
                         <h1 style={styles.text}>LATERAL RAISE</h1>
-                        <div style={styles.reco}>
-                            <h3 style={styles.text2}>Recommended</h3>
-                        </div>
+                        <div style={styles.reco1} />
                         <h2 style={styles.text1}>CHEST & ARMS | 3 Minutes </h2>
                         <button type="submit" style={styles.start} onClick={handleRaise}>Click to Start</button>
                     </div>
@@ -350,8 +342,15 @@ const styles = {
     },
     reco: {
         borderRadius: '10px',
-        cursor: 'pointer',
         backgroundColor: '#FFFF00',
+        border: '2px solid transparent',
+        margin: '5px',
+        width: '80px', 
+        height: '30px',
+        marginLeft: '5px',
+    },
+    reco1: {
+        borderRadius: '10px',
         border: '2px solid transparent',
         margin: '5px',
         width: '80px', 
