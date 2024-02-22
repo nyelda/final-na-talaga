@@ -9,6 +9,7 @@ const BMI = () => {
     const [height, setHeight] = useState(null);
     const [showCamera, setShowCamera] = useState(false);
     const [model, setModel] = useState(null);
+    const [clickedCount, setClickedCount] = useState(0); // Define clickedCount state
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
 
@@ -46,9 +47,14 @@ const BMI = () => {
 
     const cameraClick = () => {
         setShowCamera(true);
-        setTimeout(() => {
+        if (clickedCount === 1) {
+            setTimeout(() => {
+                estimateHeightFromCamera();
+            }, 5000); 
+        } else {
             estimateHeightFromCamera();
-        }, 5000); // Delay of 5 seconds (5000 milliseconds)
+        }
+        setClickedCount(prevCount => prevCount + 1);
     };
 
     const calculateBMI = () => {
