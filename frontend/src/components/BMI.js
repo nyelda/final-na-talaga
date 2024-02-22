@@ -105,7 +105,7 @@ const BMI = () => {
                     </div>
                     <div style={styles.text}>
                         <h2>Your Height: {height ? height + ' cm' : 'Height estimation in progress...'}</h2>
-                        <h2>BMI:{calculateBMI()}</h2>
+                        <h2>BMI: {calculateBMI()}</h2>
                     </div>
                     <button type="submit" style={styles.button} onClick={handleHome}>Done</button>
                 </div>
