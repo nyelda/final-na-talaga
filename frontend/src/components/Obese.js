@@ -75,8 +75,7 @@ const HomeTab = () => {
                 <div style={styles.exercise}>
                     <div className="picture">
                         <h1 style={styles.text}>BARBELL BICEPS CURL</h1>
-                        <div style={styles.reco}>
-                            <h3 style={styles.text2}>Recommended</h3>
+                        <div style={styles.reco1}>
                         </div>
                         <h2 style={styles.text1}>LEGS & ARMS | 3 Minutes </h2>
                         <button type="submit" style={styles.start} onClick={handleCurl}>Click to Start</button>
@@ -95,8 +94,7 @@ const HomeTab = () => {
                 <div style={styles.exercise}>
                     <div className="picture3">
                         <h1 style={styles.text}>DEAD LIFT</h1>
-                        <div style={styles.reco}>
-                            <h3 style={styles.text2}>Recommended</h3>
+                        <div style={styles.reco1}>
                         </div>
                         <h2 style={styles.text1}>CHEST & ARMS | 3 Minutes </h2>
                         <button type="submit" style={styles.start} onClick={handleLift}>Click to Start</button>
@@ -125,8 +123,7 @@ const HomeTab = () => {
                 <div style={styles.exercise}>
                     <div className="picture6">
                         <h1 style={styles.text}>LUNGES</h1>
-                        <div style={styles.reco}>
-                            <h3 style={styles.text2}>Recommended</h3>
+                        <div style={styles.reco1}>
                         </div>
                         <h2 style={styles.text1}>DEAD LIFT | 3 Minutes </h2>
                         <button type="submit" style={styles.start} onClick={handleLunge}>Click to Start</button>
@@ -135,8 +132,7 @@ const HomeTab = () => {
                 <div style={styles.exercise}>
                     <div className="picture8">
                         <h1 style={styles.text}>PUSH UPS</h1>
-                        <div style={styles.reco}>
-                            <h3 style={styles.text2}>Recommended</h3>
+                        <div style={styles.reco1}>
                         </div>
                         <h2 style={styles.text1}>DEAD LIFT | 3 Minutes </h2>
                         <button type="submit" style={styles.start} onClick={handlePushup}>Click to Start</button>
@@ -145,8 +141,7 @@ const HomeTab = () => {
                 <div style={styles.exercise}>
                     <div className="picture10">
                         <h1 style={styles.text}>SQUAT</h1>
-                        <div style={styles.reco}>
-                            <h3 style={styles.text2}>Recommended</h3>
+                        <div style={styles.reco1}>
                         </div>
                         <h2 style={styles.text1}>DEAD LIFT | 3 Minutes </h2>
                         <button type="submit" style={styles.start} onClick={handleSquat}>Click to Start</button>
@@ -350,8 +345,16 @@ const styles = {
     },
     reco: {
         borderRadius: '10px',
-        cursor: 'pointer',
         backgroundColor: '#FFFF00',
+        border: '2px solid transparent',
+        margin: '5px',
+        width: '80px', 
+        height: '30px',
+        marginLeft: '5px',
+    },
+    reco1: {
+        borderRadius: '10px',
+        backgroundColor: '#FFFF00 transparent',
         border: '2px solid transparent',
         margin: '5px',
         width: '80px', 

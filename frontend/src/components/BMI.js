@@ -28,7 +28,7 @@ const BMI = () => {
                 nextPage = '/Underweight';
                 break;
             case 'Healthy Weight':
-                nextPage = '/HealthyWeight';
+                nextPage = '/Healthy';
                 break;
             case 'Overweight':
                 nextPage = '/Overweight';
@@ -37,7 +37,6 @@ const BMI = () => {
                 nextPage = '/Obese';
                 break;
             default:
-                nextPage = '/homepage'; // Default to homepage if classification is not found
                 break;
         }
         alert(`Proceeding to ${classification}`);
