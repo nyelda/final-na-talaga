@@ -4,7 +4,10 @@ import Navbar from './components/Navbar'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import BMI from './components/BMI'
-import Homepage from './components/Homepage'
+import Underweight from './components/homepage/Underweight'
+import Healthy from './components/homepage/Healthy'
+import Overweight from './components/homepage/Overweight'
+import Obese from './components/homepage/Obese'
 import Curl from './components/Curl'
 import Row from './components/Row'
 import Lift from './components/Lift'
@@ -25,7 +28,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/bmi" element={<BMI />} />
-          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/underweight" element={<Underweight />} />
+          <Route path="/healthy" element={<Healthy />} />
+          <Route path="/overweight" element={<Overweight/>} />
+          <Route path="/obese" element={<Obese />} />
           <Route path="/curl" element={<Curl />} />
           <Route path="/row" element={<Row />} />
           <Route path="/lift" element={<Lift />} />

@@ -46,8 +46,10 @@ const BMI = () => {
             return 'Healthy Weight';
         } else if (bmi >= 25 && bmi <= 29.9) {
             return 'Overweight';
-        } else {
+        } else if (bmi >=30) {
             return 'Obese';
+        } else {
+            return ''
         }
     };
 

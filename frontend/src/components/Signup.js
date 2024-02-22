@@ -10,6 +10,9 @@ const Signup = () => {
         if (!username || !password) {
             alert('Please fill in all fields.');
             return;
+        } else {
+            alert('Proceeding to Calculate BMI');
+            window.location.href = '/bmi';
         }
     
         console.log(username, password);
@@ -45,11 +48,6 @@ const Signup = () => {
         });
     };    
 
-    const handleBMI = () => {
-        alert('Proceeding to Calculate BMI');
-        window.location.href = '/bmi';
-    };
-
     return (
         <div className="body">
             <div className="dashboard-container">
@@ -78,7 +76,6 @@ const Signup = () => {
                         />
                     </div>
                     <button type="submit" style={styles.button1}>Create Account</button>
-                    <button type="button" style={styles.button} onClick={handleBMI}>Proceed to BMI</button>
                 </form>
             </div>
             <div style={styles.signupLink}>

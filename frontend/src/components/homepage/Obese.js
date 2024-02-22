@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../Navbar.css';
 
-const Homepage = () => {
+const Obese = () => {
     const [activeTab, setActiveTab] = useState('exercise');
 
     const handleTabChange = (tab) => {
@@ -178,8 +178,10 @@ const ProfileTab = () => {
             return 'Healthy Weight';
         } else if (bmi >= 25 && bmi <= 29.9) {
             return 'Overweight';
-        } else {
+        } else if (bmi >=30) {
             return 'Obese';
+        } else {
+            return ''
         }
     };
 
@@ -259,7 +261,7 @@ const ProfileTab = () => {
     );
 };
 
-export default Homepage;
+export default Obese;
 
 const styles = {
     container: {

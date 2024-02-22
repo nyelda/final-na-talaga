@@ -23,11 +23,6 @@ const User = mongoose.model("UserInfo");
 app.post("/register", async (req, res) => {
     const { username, password } = req.body;
     try {
-        const oldUser = User.findOne({ username, password });
-
-        if (oldUser) {
-            res.send({ error: "User Exist" });
-        }
         await User.create({
             username,
             password,
