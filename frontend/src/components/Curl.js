@@ -31,7 +31,6 @@ const Curl = () => {
                     >
                     </video>
                         <div style={styles.webContainer}>
-                            <button type="submit" style={styles.button} onClick={cameraClick}>Open Camera</button>
                                 <div className="button1">
                                     <button type="submit" style={styles.button1} onClick={ExerClick}>Start Workout</button>
                                 </div>
