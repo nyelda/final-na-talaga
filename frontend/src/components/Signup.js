@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 const Signup = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [weight, setWeight] = useState('');
+    const [height, setHeight] = useState('');
     
     const handleSubmit = (e) => {
         e.preventDefault(); 
-        if (!username || !password) {
+        if (!username || !password || !weight || !height ) {
             alert('Please fill in all fields.');
             return;
         } else {
@@ -15,7 +17,7 @@ const Signup = () => {
             window.location.href = '/bmi';
         }
     
-        console.log(username, password);
+        console.log(username, password, weight, height);
         fetch("http://localhost:5000/register", {
             method: "POST",
             headers: {
@@ -24,6 +26,8 @@ const Signup = () => {
             body: JSON.stringify({
                 username: username,
                 password: password,
+                weight: weight,
+                height: height,
             }),
         })
         .then((res) => {
@@ -37,6 +41,9 @@ const Signup = () => {
             alert('Account Saved!');
             setUsername('');
             setPassword('');
+            setWeight('')
+            setHeight('')
+            setPassword('')
         })
         .catch(error => {
             console.error("Error registering user:", error);
@@ -46,7 +53,7 @@ const Signup = () => {
                 alert('Error creating account. Please try again.');
             }
         });
-    };    
+    };
 
     return (
         <div className="body">
@@ -72,6 +79,28 @@ const Signup = () => {
                             placeholder="Enter your password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            style={styles.input}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="weight" style={styles.label}>Weight: </label>
+                        <input
+                            type="text"
+                            id="weight"
+                            placeholder="Enter your weight in kg"
+                            value={weight}
+                            onChange={(e) => setWeight(e.target.value)}
+                            style={styles.input}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="height" style={styles.label}>Height: </label>
+                        <input
+                            type="text"
+                            id="height"
+                            placeholder="Enter your height in cm"
+                            value={height}
+                            onChange={(e) => setHeight(e.target.value)}
                             style={styles.input}
                         />
                     </div>

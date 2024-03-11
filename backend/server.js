@@ -21,11 +21,16 @@ require("./userDetails");
 const User = mongoose.model("UserInfo");
 
 app.post("/register", async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, weight, height } = req.body;
+    const heightInMeters = height / 100;
+    const bmi = weight / (heightInMeters ** 2);
     try {
         await User.create({
             username,
             password,
+            weight,
+            height,
+            bmi,
         });
         res.send({ status: "ok" });
     } catch (error) {
@@ -47,24 +52,6 @@ app.post("/login-user", async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
-
-require("./exerDetails");
-
-const Exer = mongoose.model("ExerInfo");
-
-app.post("/exereg", async (req, res) => {
-    const { weight, height } = req.body;
-    try {
-        await Exer.create({
-            weight,
-            height,
-        });
-        res.send({ status: "ok" });
-    } catch (error) {
-        res.send({ status: "error" });
-    }
-});
-
 
 app.listen(5000, () => {
     console.log("Server Started");
