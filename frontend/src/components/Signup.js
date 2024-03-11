@@ -51,7 +51,7 @@ const Signup = () => {
     return (
         <div className="body">
             <div className="dashboard-container">
-                <form onSubmit={handleSubmit} style={styles.form}> {/* Handle form submission */}
+                <form onSubmit={handleSubmit} style={styles.form}>
                     <h2 style={styles.heading}>Signup</h2>
                     <div>
                         <label htmlFor="username" style={styles.label}>Username: </label>
