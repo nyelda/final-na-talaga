@@ -6,53 +6,57 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [weight, setWeight] = useState('');
     const [height, setHeight] = useState('');
-    
-    const handleSubmit = (e) => {
+    const [bmi, setBmi] = useState('');
+
+    const calculateBMI = (weight, height) => {
+        const heightInMeters = height / 100;
+        const bmi = weight / (heightInMeters ** 2);
+        return bmi.toFixed(2);
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault(); 
+
+        const calculatedBMI = calculateBMI(parseFloat(weight), parseFloat(height));
+        setBmi(calculatedBMI);
+
         if (!username || !password || !weight || !height ) {
             alert('Please fill in all fields.');
             return;
-        } else {
-            alert('Proceeding to Calculate BMI');
-            window.location.href = '/bmi';
         }
-    
-        console.log(username, password, weight, height);
-        fetch("http://localhost:5000/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username: username,
-                password: password,
-                weight: weight,
-                height: height,
-            }),
-        })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
+
+        try {
+            const response = await fetch("http://localhost:5000/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    weight: weight,
+                    height: height,
+                    bmi: calculatedBMI,
+                }),
+            });
+            if (response.ok) {
+                alert('Account Saved!');
+                setUsername('');
+                setPassword('');
+                setWeight('');
+                setHeight('');
+                setBmi('');
+            } else {
+                throw new Error('Failed to create account. Please try again.');
             }
-            throw new Error('Failed to create account. Please try again.');
-        })
-        .then((data) => {
-            console.log(data, "userRegister")
-            alert('Account Saved!');
-            setUsername('');
-            setPassword('');
-            setWeight('')
-            setHeight('')
-            setPassword('')
-        })
-        .catch(error => {
+        } catch (error) {
             console.error("Error registering user:", error);
             if (error.message.includes('409')) {
                 alert('Account already exists.');
             } else {
                 alert('Error creating account. Please try again.');
             }
-        });
+        }
     };
 
     return (
@@ -104,6 +108,10 @@ const Signup = () => {
                             style={styles.input}
                         />
                     </div>
+                    <div>
+                        <label htmlFor="bmi" style={styles.label}>BMI: {bmi}</label>
+                    </div>
+
                     <button type="submit" style={styles.button1}>Create Account</button>
                 </form>
             </div>
