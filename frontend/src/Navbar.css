@@ -11,14 +11,14 @@
   background-size: cover;
   background-position: center;
   height: auto;
-  width: 100%;
+  width: auto;
 }
 
 .body2 {
   background-size: cover;
   background-position: center;
   height: auto;
-  width: 100%;
+  width: auto;
 }
 
 .body3 {
@@ -26,7 +26,7 @@
   background-size: cover;
   background-position: center;
   height: auto;
-  width: 100%;
+  width: auto;
 }
 
 .video {
@@ -34,7 +34,7 @@
   background-position: center;
   height: auto;
   border-radius: 15px;
-  width: 121%;
+  width: auto;
   justify-content: center;
   align-items: center;
 }
@@ -177,7 +177,7 @@
   }
   
   .nav-item:hover {
-    background-color: #FFFF00;
+    background-color: #a3943b;
   }
   
   .active {
@@ -200,3 +200,7 @@
     justify-content: center;
     margin-left: 600px;
   }
+
+  .nav-item {
+    color: white;
+}

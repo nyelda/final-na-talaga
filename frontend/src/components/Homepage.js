@@ -12,8 +12,8 @@ const Obese = () => {
         <div className="body1">
             <div className="dashboard-container">
                 <div className="navigation">
-                    <div className={`nav-item ${activeTab === 'exercise' ? 'active' : ''}`} onClick={() => handleTabChange('exercise')}>Exercises</div>
-                    <div className={`nav-item ${activeTab === 'profile' ? 'active' : ''}`} onClick={() => handleTabChange('profile')}>Profile</div>
+                <div className={`nav-item ${activeTab === 'exercise' ? 'active' : ''}`} onClick={() => handleTabChange('exercise')} style={{ color: '#fff' }}>Exercises</div>
+                <div className={`nav-item ${activeTab === 'profile' ? 'active' : ''}`} onClick={() => handleTabChange('profile')} style={{ color: '#fff' }}>Profile</div>
                 </div>
                 <div className="tab-content">
                     {activeTab === 'exercise' && <HomeTab />}
@@ -284,9 +284,9 @@ const styles = {
         marginTop: '10px',
     },
     exercise: {
-        padding: '20px',
+        padding: '5px',
         paddingRight: '22px',
-        borderRadius: '30px',
+        borderRadius: '22px',
         backgroundColor: '#DFA100',
         marginBottom: '20px',
         margin: '20px',

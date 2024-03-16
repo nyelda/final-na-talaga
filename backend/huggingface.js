@@ -1,4 +1,4 @@
-
+import { HfInference } from '@huggingface/inference';
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -8,7 +8,7 @@ const HF_ACCESS_TOKEN = process.env.HF_ACCESS_TOKEN // replace with the access t
 const inference = new HfInference(HF_ACCESS_TOKEN);
 
 const model = ""; // insert the model URL
-const imageUrl = ""; // replace with video URL
+const imageUrl = ""; // replace with image URL
 
 const response = await fetch(imageUrl);
 const imageBlob = await response.blob();
